@@ -1,9 +1,11 @@
+import { Box, Divider } from "@mui/material";
+import Sidebar from "../components/pages/home/sidebar/Sidebar";
 
 const Home = () => {
     return ( 
-        <div>
-            This is Home page
-        </div>
+        <Box sx={{display:"flex"}}>
+            <Sidebar />
+        </Box>
      );
 }
  

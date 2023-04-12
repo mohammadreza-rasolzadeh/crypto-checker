@@ -5,15 +5,18 @@ export const darkTheme = createTheme({
         mode: 'dark',
         background: {
             default: "#181A25",
+            paper: "#12131C"
         },
-    },
-});
+        divider: "#22202A"
+    }
+}, );
 
 export const lightTheme = createTheme({
     palette: {
         mode: "light",
         background: {
-            default: '#E9EDFD'
+            default: '#E9EDFD',
+            paper: "#FFFFFF"
         },
     },
 });
