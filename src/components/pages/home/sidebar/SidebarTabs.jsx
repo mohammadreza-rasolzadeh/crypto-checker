@@ -10,7 +10,6 @@ function tabProps(index) {
 }
 
 const SidebarTabs = ({ value, handleChange }) => {
-  
   return (
     <Box
       sx={{
@@ -22,6 +21,7 @@ const SidebarTabs = ({ value, handleChange }) => {
         bgcolor: "background.paper",
         ".MuiTabs-indicator": {
           top: "0px",
+          left: "0px",
           height: "48px",
           width: "4px",
           borderRadius: "21px",
@@ -29,7 +29,7 @@ const SidebarTabs = ({ value, handleChange }) => {
             "linear-gradient(rgb(42, 214, 241) 0%, rgb(88, 96, 227) 100%)",
         },
         ".MuiTab-root.Mui-selected": {
-          // color: "#2ad6f1",
+          color: "#2ad6f1",
         },
       }}
     >
@@ -52,11 +52,7 @@ const SidebarTabs = ({ value, handleChange }) => {
               icon={info.icon}
               aria-label={info.title}
               {...tabProps(index)}
-              sx={{ 
-                minWidth: 0,
-                // maxWidth:'24px',
-                // width:'24px'
-             }}
+              sx={{ minWidth: 0 }}
             />
           </Tooltip>
         ))}

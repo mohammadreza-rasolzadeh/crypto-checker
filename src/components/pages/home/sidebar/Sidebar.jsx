@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/system";
 
-import SidebarTabs from "./SidebarTabs";
 import Logo from "./Logo";
+import SidebarTabs from "./SidebarTabs";
 
 const Sidebar = ({ value, handleChange }) => {
   const theme = useTheme();
