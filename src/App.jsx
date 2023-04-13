@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import MainLayout from "./components/layouts/MainLayout";
 import Logo from "./components/pages/home/sidebar/Logo";
 import Sidebar from "./components/pages/home/sidebar/Sidebar";
+import ColoredBalls from "./components/ColoredBalls";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +47,8 @@ const App = () => {
 
   return (
     <MainLayout mode={mode}>
-      <Sidebar value={value} handleChange={handleChange} />  
+      <ColoredBalls />
+      <Sidebar value={value} handleChange={handleChange} />
       {/* <Home /> */}
     </MainLayout>
   );
