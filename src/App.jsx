@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery, Box, Tabs, Tab } from "@mui/material";
 import { HomeRounded } from "@mui/icons-material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import Home from "./pages/Home";
 import MainLayout from "./components/layouts/MainLayout";
 import Logo from "./components/pages/home/sidebar/Logo";
 import Sidebar from "./components/pages/home/sidebar/Sidebar";
 import ColoredBalls from "./components/ColoredBalls";
+import Navbar from "./components/Navbar";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -23,13 +25,6 @@ function TabPanel(props) {
     </div>
   );
 }
-
-// function a11yProps(index) {
-//   return {
-//     id: `vertical-tab-${index}`,
-//     "aria-controls": `vertical-tabpanel-${index}`,
-//   };
-// }
 
 const App = () => {
   const [mode, setMode] = useState();
@@ -48,8 +43,17 @@ const App = () => {
   return (
     <MainLayout mode={mode}>
       <ColoredBalls />
-      <Sidebar value={value} handleChange={handleChange} />
-      {/* <Home /> */}
+      <Grid xs={2.1} sm={1.17} md={.8} lg={0.55} xl={.5}>
+        <Sidebar value={value} handleChange={handleChange} />
+      </Grid>
+      <Grid xs={9.9} sm={10.83} md={11.2} lg={11.45} xl={11.5}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Navbar />
+          <TabPanel value={value} index={0}>
+            {/* <Home /> */}
+          </TabPanel>
+        </Box>
+      </Grid>
     </MainLayout>
   );
 };

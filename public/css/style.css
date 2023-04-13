@@ -3,3 +3,16 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/PoppinsLatin-Medium.eot");
+    src: url("../fonts/PoppinsLatin-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/PoppinsLatin-Medium.woff2") format("woff2"), url("../fonts/PoppinsLatin-Medium.woff") format("woff"), url("../fonts/PoppinsLatin-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    overflow: hidden;
+}
