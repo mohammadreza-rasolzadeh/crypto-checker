@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { AppBar, Box, Toolbar } from "@mui/material";
+import { useEffect, useState } from "react";
+import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
 import { RenderMobileMenu, SearchBox, MenuIcons, MoreButton } from "./";
 
@@ -8,6 +8,10 @@ export default function PrimarySearchAppBar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const theme = useTheme();
+
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,6 +26,12 @@ export default function PrimarySearchAppBar() {
   };
 
   const mobileMenuId = "primary-search-account-menu-mobile";
+
+  useEffect(() => {
+    if (isMdUp) {
+      setMobileMoreAnchorEl(null);
+    }
+  }, [isMdUp]);
 
   return (
     <Box sx={{}}>
