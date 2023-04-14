@@ -8,7 +8,7 @@ import MainLayout from "./components/layouts/MainLayout";
 import Logo from "./components/pages/home/sidebar/Logo";
 import Sidebar from "./components/pages/home/sidebar/Sidebar";
 import ColoredBalls from "./components/ColoredBalls";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,17 +43,23 @@ const App = () => {
   return (
     <MainLayout mode={mode}>
       <ColoredBalls />
-      <Grid xs={2.1} sm={1.17} md={.8} lg={0.55} xl={.5}>
-        <Sidebar value={value} handleChange={handleChange} />
-      </Grid>
-      <Grid xs={9.9} sm={10.83} md={11.2} lg={11.45} xl={11.5}>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Navbar />
-          <TabPanel value={value} index={0}>
-            {/* <Home /> */}
-          </TabPanel>
-        </Box>
-      </Grid>
+      {/* <Grid xs={2.1} sm={1.17} md={.8} lg={0.55} xl={.5}>
+      </Grid> */}
+      <Sidebar value={value} handleChange={handleChange} />
+      {/* <Grid xs={9.9} sm={10.83} md={11.2} lg={11.45} xl={11.5}>
+      </Grid> */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "calc(100% - 64px)",
+        }}
+      >
+        <Navbar />
+        <TabPanel value={value} index={0}>
+          <Home />
+        </TabPanel>
+      </Box>
     </MainLayout>
   );
 };
