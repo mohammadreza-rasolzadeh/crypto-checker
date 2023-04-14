@@ -36,6 +36,10 @@ const App = () => {
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme:dark)");
 
+  const handleThemeChange = () => {
+    setMode(prevMode => prevMode === "dark" ? "light":"dark");
+  }
+
   useEffect(() => {
     setMode(prefersDarkMode ? "dark" : "light");
   }, []);
@@ -55,7 +59,7 @@ const App = () => {
           width: "calc(100% - 64px)",
         }}
       >
-        <Navbar />
+        <Navbar handleThemeChange={handleThemeChange} />
         <TabPanel value={value} index={0}>
           <Home />
         </TabPanel>

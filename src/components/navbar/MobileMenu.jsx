@@ -1,12 +1,16 @@
-import { AccountCircle, FavoriteBorderRounded, Notifications } from "@mui/icons-material";
-import { useTheme,Badge, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  AccountCircle,
+  FavoriteBorderRounded,
+  Notifications,
+} from "@mui/icons-material";
+import { useTheme, Badge, IconButton, Menu, MenuItem } from "@mui/material";
 
-const RenderMobileMenu = ({
+const MobileMenu = ({
   mobileMoreAnchorEl,
   mobileMenuId,
   isMobileMenuOpen,
   handleMobileMenuClose,
-  handleProfileMenuOpen 
+  handleProfileMenuOpen,
 }) => {
   const theme = useTheme();
 
@@ -37,7 +41,9 @@ const RenderMobileMenu = ({
             />
           </Badge>
         </IconButton>
-        <p style={{ color: "#666873" }}>Favorites</p>
+        <p style={{ color: theme.palette.mode === "light" && "#666873" }}>
+          Favorites
+        </p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -54,7 +60,9 @@ const RenderMobileMenu = ({
             />
           </Badge>
         </IconButton>
-        <p style={{ color: "#666873" }}>Notifications</p>
+        <p style={{ color: theme.palette.mode === "light" && "#666873" }}>
+          Notifications
+        </p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -71,10 +79,12 @@ const RenderMobileMenu = ({
             }}
           />
         </IconButton>
-        <p style={{ color: "#666873" }}>Profile</p>
+        <p style={{ color: theme.palette.mode === "light" && "#666873" }}>
+          Profile
+        </p>
       </MenuItem>
     </Menu>
   );
 };
 
-export default RenderMobileMenu;
+export default MobileMenu;

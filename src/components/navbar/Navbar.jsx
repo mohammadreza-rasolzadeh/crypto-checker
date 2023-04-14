@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
-import { RenderMobileMenu, SearchBox, MenuIcons, MoreButton } from "./";
+import { MobileMenu, SearchBox, MenuIcons, MoreButton } from "./";
+import SwitchMode from "./SwitchMode";
 
-export default function PrimarySearchAppBar() {
+const Navbar = ({handleThemeChange}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -49,6 +50,7 @@ export default function PrimarySearchAppBar() {
         >
           <SearchBox />
           <Box sx={{ flexGrow: 1 }} />
+          <SwitchMode handleThemeChange={handleThemeChange} />
           <MenuIcons handleProfileMenuOpen={handleProfileMenuOpen} />
           <MoreButton
             mobileMenuId={mobileMenuId}
@@ -56,7 +58,7 @@ export default function PrimarySearchAppBar() {
           />
         </Toolbar>
       </AppBar>
-      <RenderMobileMenu
+      <MobileMenu
         mobileMoreAnchorEl={mobileMoreAnchorEl}
         mobileMenuId={mobileMenuId}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -65,4 +67,6 @@ export default function PrimarySearchAppBar() {
       />
     </Box>
   );
-}
+};
+
+export default Navbar;
