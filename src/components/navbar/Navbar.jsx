@@ -4,7 +4,7 @@ import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 import { MobileMenu, SearchBox, MenuIcons, MoreButton } from "./";
 import SwitchMode from "./SwitchMode";
 
-const Navbar = ({handleThemeChange}) => {
+const Navbar = ({ handleThemeChange }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -35,7 +35,7 @@ const Navbar = ({handleThemeChange}) => {
   }, [isMdUp]);
 
   return (
-    <Box sx={{}}>
+    <Box>
       <AppBar
         position="static"
         sx={{

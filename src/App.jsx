@@ -42,7 +42,7 @@ const App = () => {
 
   useEffect(() => {
     setMode(prefersDarkMode ? "dark" : "light");
-  }, []);
+  }, [prefersDarkMode]);
 
   return (
     <MainLayout mode={mode}>
