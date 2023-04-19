@@ -1,24 +1,34 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useTheme, Box, Avatar, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
-import { selectTrendingCoins } from "../../../reducers/coinSlice";
+import {
+  fetchTrendingCoins,
+  selectTrendingCoins,
+} from "../../../reducers/coinSlice";
 
 const TrendingCoins = () => {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const coins = useSelector((state) => selectTrendingCoins(state));
+  const dispatch = useDispatch();
 
-    const settings = {
-      dots: false,
-      arrows: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 2,
-      variableWidth: true,
-    };
-  
+  const coins = useSelector((state) => selectTrendingCoins(state));
+
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+    variableWidth: true,
+  };
+
+  useEffect(() => {
+    dispatch(fetchTrendingCoins());
+  }, [dispatch]);
+
   return (
     <Slider {...settings}>
       {coins?.map((coin, index) => (
@@ -27,6 +37,7 @@ const TrendingCoins = () => {
           sx={{
             display: "flex!important",
             flexDirection: "column",
+            justifyContent: "space-between",
             alignItems: "flex-start",
             gap: "16px",
             width: "241px !important",
@@ -44,7 +55,17 @@ const TrendingCoins = () => {
               sx={{ width: "24px", height: "24px" }}
               src={coin.item.small}
             />
-            <Typography variant="body2" sx={{ letterSpacing: 1 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 100,
+                letterSpacing: 1,
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 1,
+                overflow: "hidden",
+              }}
+            >
               {`${coin.item.name} (24h)`}
             </Typography>
           </Box>
