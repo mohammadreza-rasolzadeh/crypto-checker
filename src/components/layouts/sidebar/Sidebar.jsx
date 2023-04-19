@@ -15,7 +15,7 @@ const Sidebar = ({ value, handleChange }) => {
         justifyContent: "space-between",
         alignItems: "center",
         width: 64,
-        height: "100vh",
+        // height: "100vh",
         backgroundColor: "background.paper",
         borderRight: `1px solid ${
           theme.palette.mode === "dark" ? "#22202A" : "#DCDCDC"
