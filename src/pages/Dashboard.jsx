@@ -7,17 +7,19 @@ import Slider from "react-slick";
 
 import TrendingCoins from "../components/pages/dashboard/TrendingCoins";
 import NftsList from "../components/pages/dashboard/NftsList";
+import CoinList from "../components/pages/dashboard/CoinList";
 
 const Dashboard = () => {
   const theme = useTheme();
   const status = useSelector((state) => state.cryptoCurrency.status);
 
   return (
-    <Box sx={{ pl: 2 }}>
+    <Box sx={{ px: 2 }}>
       <Grid container>
         <Grid xs={12} md={8.7}>
           <TrendingCoins />
           <NftsList />
+          <CoinList />
         </Grid>
         <Grid xs={12} md={3.3}>
           2

@@ -112,21 +112,27 @@ const CoinList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow sx={{ backgroundColor: "background.paper" }}>
+            <TableRow
+              sx={{
+                backgroundColor: "background.paper",
+                " .MuiTableRow-root": { borderRadius: "20px !important" },
+              }}
+            >
               <TableCell
                 sx={{
                   color: "text.secondary",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
                   borderColor:
                     theme.palette.mode === "dark" ? "#303241" : "#DADADC",
                 }}
               >
-                <Avatar
-                  src={`https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579`}
-                />
-                BitCoin
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: "12px" }}
+                >
+                  <Avatar
+                    src={`https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579`}
+                  />
+                  BitCoin
+                </Box>
               </TableCell>
               <TableCell
                 align="right"
