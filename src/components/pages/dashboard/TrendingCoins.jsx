@@ -77,7 +77,10 @@ const TrendingCoins = () => {
             >
               Current Value
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 1,
+                overflow: "hidden",}}>
               <Typography component="span" sx={{ color: "text.secondary" }}>
                 $
               </Typography>{" "}
