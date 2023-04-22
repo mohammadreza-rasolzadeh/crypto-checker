@@ -3,6 +3,7 @@ import {
     getTrendingCoins,
     getNftsList,
     getNfts,
+    getCoinList,
 } from "../services/cryptoServices";
 
 export const fetchTrendingCoins = createAsyncThunk(
@@ -21,6 +22,14 @@ export const fetchNftsList = createAsyncThunk(
     }
 );
 
+export const fetchCoinList = createAsyncThunk(
+    "/coins/fetchCoinList",
+    async() => {
+        const response = await getCoinList();
+        return response.data;
+    }
+);
+
 export const fetchNfts = createAsyncThunk("/nfts/fetchNfts", async(nftsId) => {
     const response = await getNfts(nftsId);
     return response.data;
@@ -30,6 +39,7 @@ const initialState = {
     trendingCoin: [],
     nftsList: [],
     nfts: [],
+    coins: [],
     status: null,
 };
 
@@ -69,10 +79,22 @@ export const cryptoSlice = createSlice({
             })
             .addCase(fetchNfts.rejected, (state, _) => {
                 state.status = "rejected";
-            });
+            })
+            .addCase(fetchCoinList.pending, (state, _) => {
+                state.status = "pending";
+            })
+            .addCase(fetchCoinList.fulfilled, (state, action) => {
+                state.status = "success";
+                state.coins = action.payload;
+            })
+            .addCase(fetchCoinList.rejected, (state, _) => {
+                state.status = "rejected";
+            })
     },
 });
 
 export default cryptoSlice.reducer;
 export const selectTrendingCoins = (state) =>
     state.cryptoCurrency.trendingCoin.coins;
+
+// export const selectCoinList = (state) => state.cryptoCurrency.coins;
