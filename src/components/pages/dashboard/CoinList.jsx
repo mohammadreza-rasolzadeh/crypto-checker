@@ -1,83 +1,37 @@
-import { KeyboardArrowRight } from "@mui/icons-material";
-import {
-  Avatar,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { green } from "@mui/material/colors";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@mui/material";
+
+import CoinItem from "./CoinItem";
+import CoinListTitle from "./CoinListTitle";
+import CoinListHeader from "./CoinListHeader";
+import { fetchCoinList } from "../../../reducers/coinSlice";
 
 const CoinList = () => {
-  const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const coins = useSelector((state) => state.cryptoCurrency.coins);
+
+  useEffect(() => {
+    dispatch(fetchCoinList());
+  }, [dispatch, fetchCoinList]);
+
   return (
     <Box sx={{ mb: 5 }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 2,
-        }}
-      >
-        <Typography sx={{ fontSize: "24px" }}>
-          Cryptocurrency Prices by Market Cap
-        </Typography>
-        <Link to="/coins" style={{ textDecoration: "none" }}>
-          <Typography
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "4px",
-              color: "text.primary",
-              "&:hover": { color: "text.secondary" },
-            }}
-          >
-            see all <KeyboardArrowRight />
-          </Typography>
-        </Link>
+      <CoinListTitle />
+      <Box sx={{ pt: 2 }}>
+        <CoinListHeader />
+        <Box sx={{ marginTop: "10px" }}>
+          {coins.slice(0, 5).map((coin) => (
+            <CoinItem key={coin.id} coin={coin} />
+          ))}
+        </Box>
       </Box>
-      {/* <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-          <Avatar
-            src={`https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579`}
-          />
-          <Box>
-            <Typography>BitCoin</Typography>
-            <Typography variant="caption" color="text.secondary">
-              BTC
-            </Typography>
-          </Box>
-        </Box>
-        <Box>
-          <Typography>$28,921.44</Typography>
-          <Typography variant="caption" sx={{ color: green["A700"] }}>
-            -1.6%
-          </Typography>
-        </Box>
-      </Box> */}
-      <TableContainer
-        component="paper"
-        sx={{ backgroundColor: "background.paper", pt: 1 }}
-      >
+      {/* <TableContainer sx={{ pt: 1 }}>
         <Table aria-label="coin table">
           <TableHead>
             <TableRow>
+              <TableCell sx={{ border: "none" }}>#</TableCell>
               <TableCell sx={{ border: "none" }}>Coin</TableCell>
               <TableCell align="right" sx={{ border: "none" }}>
                 Price
@@ -112,77 +66,12 @@ const CoinList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow
-              sx={{
-                backgroundColor: "background.paper",
-                " .MuiTableRow-root": { borderRadius: "20px !important" },
-              }}
-            >
-              <TableCell
-                sx={{
-                  color: "text.secondary",
-                  borderColor:
-                    theme.palette.mode === "dark" ? "#303241" : "#DADADC",
-                }}
-              >
-                <Box
-                  sx={{ display: "flex", alignItems: "center", gap: "12px" }}
-                >
-                  <Avatar
-                    src={`https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579`}
-                  />
-                  BitCoin
-                </Box>
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{
-                  borderColor:
-                    theme.palette.mode === "dark" ? "#303241" : "#DADADC",
-                }}
-              >
-                $28,921.44
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{
-                  display: { xs: "none", sm: "table-cell" },
-                  color: green["A700"],
-                  borderColor:
-                    theme.palette.mode === "dark" ? "#303241" : "#DADADC",
-                }}
-              >
-                {" "}
-                -1.6%{" "}
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{
-                  display: { xs: "none", sm: "table-cell" },
-                  color: green["A700"],
-                  borderColor:
-                    theme.palette.mode === "dark" ? "#303241" : "#DADADC",
-                }}
-              >
-                {" "}
-                -3.3%{" "}
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{
-                  display: { xs: "none", sm: "table-cell" },
-                  color: "text.secondary",
-                  borderColor:
-                    theme.palette.mode === "dark" ? "#303241" : "#DADADC",
-                }}
-              >
-                {" "}
-                2023-04-20{" "}
-              </TableCell>
-            </TableRow>
+            {coins?.slice(0, 4).map((coin, index) => (
+              <Coin key={index} coin={coin} />
+            ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
     </Box>
   );
 };
