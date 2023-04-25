@@ -21,3 +21,13 @@ export const getCoinList = (currency = "usd") => {
     const url = `${SERVER_URL}/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
     return axios.get(url);
 };
+
+export const getExchanges = () => {
+    const url = `${SERVER_URL}/exchanges`;
+    return axios.get(url);
+};
+
+export const getExchangeCoin = (coinId = "binance") => {
+    const url = `${SERVER_URL}/exchanges/${coinId}`;
+    return axios.get(url);
+};
