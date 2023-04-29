@@ -43,7 +43,14 @@ const CategoryItem = ({ index, category }) => {
         >
           <Typography
             variant="body2"
-            sx={{ color: "text.primary", letterSpacing: 1 }}
+            sx={{
+              color: "text.primary",
+              letterSpacing: 1,
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 1,
+              overflow: "hidden",
+            }}
           >
             {category.name}
           </Typography>
