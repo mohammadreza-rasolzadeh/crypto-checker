@@ -6,6 +6,7 @@ import {
     getCoinList,
     getExchangeCoin,
     getExchanges,
+    getCategoriesList,
 } from "../services/cryptoServices";
 
 export const fetchTrendingCoins = createAsyncThunk(
@@ -53,6 +54,14 @@ export const fetchExchangeCoin = createAsyncThunk(
     }
 );
 
+export const fetchCategoriesList = createAsyncThunk(
+    "/categories/fetchCategoriesList",
+    async() => {
+        const response = await getCategoriesList();
+        return response.data;
+    }
+);
+
 const initialState = {
     trendingCoin: [],
     nftsList: [],
@@ -60,6 +69,7 @@ const initialState = {
     coins: [],
     exchanges: [],
     exchangeCoin: [],
+    categories: [],
     status: null,
 };
 
@@ -128,6 +138,16 @@ export const cryptoSlice = createSlice({
                 state.exchangeCoin = action.payload;
             })
             .addCase(fetchExchangeCoin.rejected, (state, _) => {
+                state.status = "rejected";
+            })
+            .addCase(fetchCategoriesList.pending, (state, _) => {
+                state.status = "pending";
+            })
+            .addCase(fetchCategoriesList.fulfilled, (state, action) => {
+                state.status = "success";
+                state.categories = action.payload;
+            })
+            .addCase(fetchCategoriesList.rejected, (state, _) => {
                 state.status = "rejected";
             })
     },

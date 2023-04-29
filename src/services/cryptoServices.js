@@ -31,3 +31,8 @@ export const getExchangeCoin = (coinId = "binance") => {
     const url = `${SERVER_URL}/exchanges/${coinId}`;
     return axios.get(url);
 };
+
+export const getCategoriesList = () => {
+    const url = `${SERVER_URL}/coins/categories`;
+    return axios.get(url);
+};
