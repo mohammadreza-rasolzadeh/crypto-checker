@@ -7,7 +7,7 @@ import TrendingCoins from "../components/pages/dashboard/TrendingCoins";
 import NftsList from "../components/pages/dashboard/NftsList";
 import CoinList from "../components/pages/dashboard/CoinList";
 import Exchange from "../components/pages/dashboard/Exchange";
-import Categories from "../components/pages/dashboard/categories/Categories";
+import CategoriesList from "../components/pages/dashboard/categories/CategoriesList";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -20,7 +20,7 @@ const Dashboard = () => {
           <TrendingCoins />
           <NftsList />
           <CoinList />
-          <Categories />
+          <CategoriesList />
         </Grid>
         <Grid xs={12} md={4.2} xl={3}>
           <Exchange />
