@@ -4,10 +4,11 @@ import { useTheme, Box} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 import TrendingCoins from "../components/pages/dashboard/TrendingCoins";
-import NftsList from "../components/pages/dashboard/NftsList";
-import CoinList from "../components/pages/dashboard/CoinList";
+import NftsList from "../components/pages/dashboard/nfts/NftsList";
+import CoinList from "../components/pages/dashboard/coins/CoinList";
 import Exchange from "../components/pages/dashboard/Exchange";
 import CategoriesList from "../components/pages/dashboard/categories/CategoriesList";
+import GlobalCryptocurrency from "../components/pages/dashboard/globalCryptocurrency/GlobalCryptoCurrency";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -24,6 +25,7 @@ const Dashboard = () => {
         </Grid>
         <Grid xs={12} md={4.2} xl={3}>
           <Exchange />
+          <GlobalCryptocurrency />
         </Grid>
       </Grid>
     </Box>
