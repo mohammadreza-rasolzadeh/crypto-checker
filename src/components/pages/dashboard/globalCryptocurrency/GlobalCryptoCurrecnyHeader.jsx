@@ -28,7 +28,7 @@ const GlobalCryptoCurrencyHeader = () => {
         }}
       >
         <Typography variant="caption" sx={{ color: "#666873" }}>
-          price
+        Details
         </Typography>
       </Box>
     </Box>

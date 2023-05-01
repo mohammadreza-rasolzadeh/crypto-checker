@@ -7,6 +7,7 @@ import {
     getExchangeCoin,
     getExchanges,
     getCategoriesList,
+    getGlobalCryptoCurrencyEecentralized,
 } from "../services/cryptoServices";
 
 export const fetchTrendingCoins = createAsyncThunk(
@@ -62,6 +63,14 @@ export const fetchCategoriesList = createAsyncThunk(
     }
 );
 
+export const fetchGlobalCryptoCurrencyEecentralized = createAsyncThunk(
+    "globalCryptoCurrency/fetchGlobalCryptoCurrency",
+    async() => {
+        const response = await getGlobalCryptoCurrencyEecentralized();
+        return response.data;
+    }
+);
+
 const initialState = {
     trendingCoin: [],
     nftsList: [],
@@ -70,6 +79,7 @@ const initialState = {
     exchanges: [],
     exchangeCoin: [],
     categories: [],
+    GlobalCryptoCurrencyEecentralized: [],
     status: null,
 };
 
@@ -150,6 +160,19 @@ export const cryptoSlice = createSlice({
             .addCase(fetchCategoriesList.rejected, (state, _) => {
                 state.status = "rejected";
             })
+            .addCase(fetchGlobalCryptoCurrencyEecentralized.pending, (state, _) => {
+                state.status = "pending";
+            })
+            .addCase(
+                fetchGlobalCryptoCurrencyEecentralized.fulfilled,
+                (state, action) => {
+                    state.status = "success";
+                    state.GlobalCryptoCurrencyEecentralized = action.payload;
+                }
+            )
+            .addCase(fetchGlobalCryptoCurrencyEecentralized.rejected, (state, _) => {
+                state.status = "rejected";
+            });
     },
 });
 

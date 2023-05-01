@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 
-const GlobalCryptoCurrencyItem = () => {
+const GlobalCryptoCurrencyItem = ({ index, name, value }) => {
   const theme = useTheme();
 
   return (
@@ -24,10 +24,25 @@ const GlobalCryptoCurrencyItem = () => {
     >
       <Box sx={{ width: "min(100%,30px)" }}>
         <Typography variant="caption" sx={{ color: "#666873" }}>
-          1
+          {index + 1}
         </Typography>
       </Box>
       <Box sx={{ width: 230 }}>
+        <Typography
+          variant="caption"
+          sx={{
+            textTransform: "capitalize",
+            letterSpacing: 1,
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 1,
+            overflow: "hidden",
+          }}
+        >
+          {name.split("_").join(" ")}
+        </Typography>
+      </Box>
+      <Box sx={{ width: 140 }}>
         <Typography
           variant="caption"
           sx={{
@@ -35,19 +50,10 @@ const GlobalCryptoCurrencyItem = () => {
             WebkitBoxOrient: "vertical",
             WebkitLineClamp: 1,
             overflow: "hidden",
+            color: "#666873",
           }}
         >
-          Defi Market Capitalization in USD
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          width: 140,
-          display: { xs: "none", sm: "block" },
-        }}
-      >
-        <Typography variant="caption">
-          ${(47763777239.372263986423963726).toLocaleString()}
+          {/[\d]+/.test(value) ? `$${Number(value).toLocaleString()}` : value}
         </Typography>
       </Box>
     </Box>

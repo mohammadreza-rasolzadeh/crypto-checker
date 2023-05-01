@@ -36,3 +36,8 @@ export const getCategoriesList = () => {
     const url = `${SERVER_URL}/coins/categories`;
     return axios.get(url);
 };
+
+export const getGlobalCryptoCurrencyEecentralized = () => {
+    const url = `${SERVER_URL}/global/decentralized_finance_defi`;
+    return axios.get(url);
+};

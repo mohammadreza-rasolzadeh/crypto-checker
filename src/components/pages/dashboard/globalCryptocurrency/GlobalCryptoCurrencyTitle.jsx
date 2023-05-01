@@ -13,7 +13,9 @@ const GlobalCryptoCurrencyTitle = () => {
         marginBottom: 2,
       }}
     >
-      <Typography variant="body1">Global Cryptocurrency Market Cap</Typography>
+      <Typography variant="body2">
+        Cryptocurrency Global Eecentralized Finance(defi) data
+      </Typography>
       <Link to="/global" style={{ textDecoration: "none" }}>
         <Typography
           sx={{
