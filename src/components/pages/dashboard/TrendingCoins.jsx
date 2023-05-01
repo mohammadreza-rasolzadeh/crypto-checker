@@ -58,7 +58,6 @@ const TrendingCoins = () => {
             <Typography
               variant="body2"
               sx={{
-                fontWeight: 100,
                 letterSpacing: 1,
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
@@ -72,19 +71,21 @@ const TrendingCoins = () => {
           <Box>
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", letterSpacing: 1 }}
+              sx={{ color: "#666873", letterSpacing: 1 }}
               gutterBottom
             >
               Current Value
             </Typography>
-            <Typography variant="body2" sx={{display: "-webkit-box",
+            <Typography
+              variant="body2"
+              sx={{
+                display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
                 WebkitLineClamp: 1,
-                overflow: "hidden",}}>
-              <Typography component="span" sx={{ color: "text.secondary" }}>
-                $
-              </Typography>{" "}
-              {coin.item.price_btc}
+                overflow: "hidden",
+              }}
+            >
+              ${coin.item.price_btc}
             </Typography>
           </Box>
         </Box>

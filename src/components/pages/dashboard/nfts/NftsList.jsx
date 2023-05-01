@@ -17,9 +17,6 @@ import { fetchNftsList } from "../../../../reducers/coinSlice";
 const NftsList = () => {
   const theme = useTheme();
 
-  // const dispatch = useDispatch();
-  // const data = useSelector(state => state.trendingCoins.nftsList);
-
   const { data } = useGetNftsListQuery();
 
   const settings = {
@@ -31,10 +28,6 @@ const NftsList = () => {
     slidesToScroll: 2,
     variableWidth: true,
   };
-
-  // useEffect(() => {
-  //   dispatch(fetchNftsList())
-  // },[])
 
   return (
     <Box sx={{ my: 2 }}>

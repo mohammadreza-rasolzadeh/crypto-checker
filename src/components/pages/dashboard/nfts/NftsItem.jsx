@@ -47,27 +47,24 @@ const NftsItem = ({ id }) => {
           WebkitBoxOrient: "vertical",
           WebkitLineClamp: 3,
           overflow: "hidden",
-          color: "#43465C",
+          color: "#666873",
         }}
       >
         {data?.description}
       </Typography>
       <Box>
-        <Typography
-          variant="body2"
-          sx={{ color: "text.secondary", letterSpacing: 1 }}
-          gutterBottom
-        >
+        <Typography variant="body2" sx={{ letterSpacing: 1 }} gutterBottom>
           Current Bid
         </Typography>
         <Typography
           variant="body2"
-          sx={{ textTransform: "capitalize", letterSpacing: 1 }}
+          sx={{
+            textTransform: "capitalize",
+            letterSpacing: 1,
+            color: "#666873",
+          }}
         >
-          <Typography component="span" sx={{ color: "text.secondary" }}>
-            $
-          </Typography>{" "}
-          {`${data?.floor_price.usd.toLocaleString()} ${
+          ${`${data?.floor_price.usd.toLocaleString()} ${
             data?.asset_platform_id
           }`}
         </Typography>

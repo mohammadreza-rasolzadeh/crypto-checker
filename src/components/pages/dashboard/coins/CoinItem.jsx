@@ -66,7 +66,14 @@ const CoinItem = ({ coin }) => {
           >
             <Typography
               variant="body2"
-              sx={{ color: "text.primary", letterSpacing: 1 }}
+              sx={{
+                color: "text.primary",
+                letterSpacing: 1,
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 1,
+                overflow: "hidden",
+              }}
             >
               {coin?.name}
             </Typography>
@@ -93,7 +100,7 @@ const CoinItem = ({ coin }) => {
         }}
       >
         <Typography variant="caption">
-          $ {coin?.current_price.toLocaleString()}
+          ${coin?.current_price.toLocaleString()}
         </Typography>
         <Typography
           variant="caption"
