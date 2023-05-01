@@ -1,21 +1,21 @@
-import { Box } from "@mui/material";
-import { useTheme } from "@mui/system";
+import {useTheme, Box } from "@mui/material";
 
 import Logo from "./Logo";
 import SidebarTabs from "./SidebarTabs";
 
 const Sidebar = ({ value, handleChange }) => {
   const theme = useTheme();
+
   return (
     <Box
       sx={{
-        position: "relative",
+        position: "fixed",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
         width: 64,
-        // height: "100vh",
+        height: "100%",
         backgroundColor: "background.paper",
         borderRight: `1px solid ${
           theme.palette.mode === "dark" ? "#22202A" : "#DCDCDC"

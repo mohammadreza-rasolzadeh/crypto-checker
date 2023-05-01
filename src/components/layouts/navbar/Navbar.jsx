@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
-import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 import { MobileMenu, SearchBox, MenuIcons, MoreButton } from "./";
 import SwitchMode from "./SwitchMode";
 
-const Navbar = ({ handleThemeChange }) => {
+const Navbar = ({ handleThemeChange, props }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -37,17 +43,17 @@ const Navbar = ({ handleThemeChange }) => {
   return (
     <Box>
       <AppBar
-        position="static"
+        position="fixed"
         sx={{
+          width: "calc(100% - 64px)",
           "&.MuiAppBar-root": {
             background: "none",
             boxShadow: "none",
+            backdropFilter: "blur(40px)",
           },
         }}
       >
-        <Toolbar
-          sx={{ "&.MuiToolbar-root": { minHeight: 0, padding: "16px" } }}
-        >
+        <Toolbar sx={{ "&.MuiToolbar-root": { minHeight: 0, p: "16px" } }}>
           <SearchBox />
           <Box sx={{ flexGrow: 1 }} />
           <SwitchMode handleThemeChange={handleThemeChange} />
